@@ -46,6 +46,7 @@ Future Home of Github User Search
 
 ### API Docs
 
+* [Authentication](https://docs.github.com/en/rest/overview/other-authentication-methods#via-oauth-and-personal-access-tokens)
 * [Link Header](https://developer.github.com/v3/#link-header)
   * Hypermedia as the Engine of Application State (**HATEOAS**)
 
