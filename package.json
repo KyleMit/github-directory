@@ -3,7 +3,11 @@
     "version": "1.0.0",
     "description": "github user search",
     "main": "index.js",
-    "scripts": {},
+    "scripts": {
+        "prebuild": "cd functions && npm i",
+        "build": "",
+        "dev": "netlify dev"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/KyleMit/github-directory.git"
@@ -19,9 +23,7 @@
         "url": "https://github.com/KyleMit/github-directory/issues"
     },
     "homepage": "https://github.com/KyleMit/github-directory#readme",
-    "dependencies": {
-        "node-fetch": "^2.6.1"
-    },
+    "dependencies": {},
     "devDependencies": {
         "netlify-cli": "^2.61.2"
     }

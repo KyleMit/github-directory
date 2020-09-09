@@ -1,0 +1,11 @@
+{
+    "name": "functions",
+    "version": "1.0.0",
+    "description": "function call dependencies",
+    "scripts": {},
+    "author": "KyleMit",
+    "license": "MIT",
+    "dependencies": {
+        "node-fetch": "^2.6.1"
+    }
+}
