@@ -1,0 +1,133 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1.1em;
+    line-height: 1.4em;
+}
+
+header {
+    background: #4c2889;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 25px;
+}
+
+header .svg {
+    margin-right: 10px;
+    height: 40px;
+}
+
+.waves {
+    width: 100%;
+}
+
+
+/* form */
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+    position: relative;
+}
+
+.input-group {
+    display: flex;
+}
+
+input#search-input {
+    flex-grow: 1;
+    line-height: 1.1em;
+    font-size: 1.1em;
+    padding: 5px 8px;
+}
+
+form input,
+form button {
+    background: #eaeaea;
+    border: 1px solid #c2c2c2;
+}
+
+form button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    line-height: 1.1em;
+    font-size: 1.1em;
+    padding: 4px 9px;
+}
+
+form button:hover {
+    background: #eaeaea;
+}
+
+button .fa-search {
+    height: 15px;
+    margin-right: 5px;
+}
+
+
+/* no-js */
+
+.no-js form button {
+    display: block;
+}
+
+.no-js .input-group :first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+.no-js .input-group :last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+.yes-js form button {
+    display: none;
+}
+
+.yes-js .input-group :first-child {
+    border-radius: 5px;
+}
+
+
+/* sections */
+
+section {
+    padding: 25px;
+}
+
+
+/* elements */
+
+svg {
+    max-width: 100%;
+}
+
+svg.hero {
+    height: 200px;
+}
+
+
+/* states */
+
+[data-state] #splash,
+[data-state] #results,
+[data-state] #empty {
+    display: none;
+}
+
+[data-state='clean'] #splash {
+    display: block
+}
+
+[data-state='results'] #results {
+    display: block
+}
+
+[data-state='empty'] #empty {
+    display: block
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style> {% include "../assets/styles/site.css" %} </style>
+    <title>Github Directory</title>
+</head>
+<body class="no-js" data-state="{{state}}">
+     <script> {% include "../assets/scripts/init.js" %} </script>
+
+    <header>
+        {% include "../assets/github-directory.svg" %}
+        <h1>Github Directory</h1>
+    </header>
+
+    {% include "../assets/waves.svg" %}
+
+    <main>
+
+        <form action="/search" method="get" id="search-form">
+
+            <label for="search-input">Search Github Users</label>
+            <div class="input-group">
+                <input type="search" name="q" id="search-input" placeholder="e.g. KyleMit">
+                <button type="submit">
+                    {% include "../assets/icons/search.svg" %}
+                    <span>search</span>
+                </button>
+            </div>
+
+        </form>
+
+        {# need to include ID for AJAX results #}
+        <section id="results">
+            {% if results %}
+                {% include "./results.njk" %}
+            {% endif %}
+        </section>
+
+        <section id="splash">
+            <h3>type to get started</h3>
+            {% include "../assets/images/undraw-people-search.svg" %}
+
+        </section>
+
+        <section id="empty">
+            <h3>try again</h3>
+            {% include "../assets/images/undraw-problem-solving.svg" %}
+
+        </section>
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+
+
+    <script> {% include "../assets/scripts/client.js" %} </script>
+
+</body>
+</html>

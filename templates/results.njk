@@ -1,0 +1,20 @@
+<div class="results">
+    <div class="results-summary">
+        <strong>{{results.total_count}}</strong> results
+    </div>
+    <ul class="results-body">
+
+        {% for item in results.items %}
+        <li>
+            <a href="{{item.html_url}}">
+                {{item.login}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% if results.incomplete_results %}
+        <div class="results-pagination">
+                Pagination
+        </div>
+    {% endif %}
+</div>

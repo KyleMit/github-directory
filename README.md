@@ -32,6 +32,7 @@ Future Home of Github User Search
   * Deep Link URLs
 * Rate Limiting
   * Credentials
+  * Server + Client Pagination
 * Security
   * Injection Attack
 * [Advanced Search](https://docs.github.com/en/github/searching-for-information-on-github/searching-users#search-only-users-or-organizations)
@@ -42,7 +43,7 @@ Future Home of Github User Search
 * [REST API v3](https://developer.github.com/v3/search/)
 * [REST API](https://docs.github.com/en/rest/reference/search)
 * [GitHub GraphQL API](https://docs.github.com/en/graphql)
-* **Example**: https://api.github.com/search/users?q=KyleMit
+* **Example**: `https://api.github.com/search/users?q=KyleMit`
 
 ### API Docs
 
@@ -55,6 +56,7 @@ Future Home of Github User Search
 * [Font Awesome](https://fontawesome.com/)
 * [Undraw](https://undraw.co/)
 * [Google Fonts](https://fonts.google.com/)
+* [Get Waves](https://getwaves.io/)
 
 ## Wireframes
 
@@ -62,4 +64,4 @@ Future Home of Github User Search
 
 ## Prior Art
 
-**Prior Art**: https://github.com/search
+* [Native Github Search](https://github.com/search)

@@ -5,8 +5,11 @@
     "main": "index.js",
     "scripts": {
         "prebuild": "cd functions && npm i",
-        "build": "",
-        "dev": "netlify dev"
+        "build": "node cli/build.js",
+        "preserve": "npm run build",
+        "serve": "netlify dev",
+        "test": "mocha",
+        "debug": "node — inspect ./node_modules/.bin/netlify dev"
     },
     "repository": {
         "type": "git",
@@ -23,8 +26,11 @@
         "url": "https://github.com/KyleMit/github-directory/issues"
     },
     "homepage": "https://github.com/KyleMit/github-directory#readme",
-    "dependencies": {},
+    "dependencies": {
+        "nunjucks": "^3.2.2"
+    },
     "devDependencies": {
+        "mocha": "^7.1.2",
         "netlify-cli": "^2.61.2"
     }
 }
