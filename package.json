@@ -7,7 +7,7 @@
         "build": "node utils/build.js",
         "preserve": "npm run build",
         "serve": "netlify dev",
-        "test": "mocha",
+        "test": "mocha --timeout 10000",
         "debug": "node — inspect ./node_modules/.bin/netlify dev"
     },
     "repository": {
@@ -33,6 +33,7 @@
         "archiver": "^5.0.2",
         "extract-zip": "^2.0.1",
         "mocha": "^7.1.2",
-        "netlify-cli": "^2.61.2"
+        "netlify-cli": "^2.61.2",
+        "dotenv": "^8.2.0"
     }
 }
