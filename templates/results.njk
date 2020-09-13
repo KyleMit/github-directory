@@ -4,10 +4,10 @@
     </div>
     <ul class="results-body">
 
-        {% for item in results.items %}
+        {% for user in results.users %}
         <li>
-            <a href="{{item.html_url}}">
-                {{item.login}}
+            <a href="{{user.html_url}}">
+                {{user.login}}
             </a>
         </li>
         {% endfor %}

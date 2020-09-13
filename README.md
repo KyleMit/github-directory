@@ -43,7 +43,9 @@ Future Home of Github User Search
 * [REST API v3](https://developer.github.com/v3/search/)
 * [REST API](https://docs.github.com/en/rest/reference/search)
 * [GitHub GraphQL API](https://docs.github.com/en/graphql)
-* **Example**: `https://api.github.com/search/users?q=KyleMit`
+* **Examples**:
+  * **REST**: `https://api.github.com/search/users?q=KyleMit`
+  * **GraphQl**: [Graph API Explorer](https://developer.github.com/v4/explorer/)
 
 ### API Docs
 

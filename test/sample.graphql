@@ -1,0 +1,29 @@
+{
+    search(query: "kyle", type: USER, first: 10) {
+        userCount
+        edges {
+            node {
+                ... on User {
+                    id
+                    login
+                    name
+                    bio
+                    avatarUrl(size: 48)
+                    twitterUsername
+                    followers {
+                        totalCount
+                    }
+                    following {
+                        totalCount
+                    }
+                    repositories {
+                        totalCount
+                    }
+                    starredRepositories {
+                        totalCount
+                    }
+                }
+            }
+        }
+    }
+}

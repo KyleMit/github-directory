@@ -7,6 +7,7 @@ module.exports = githubClient
 
 
 async function githubClient(params) {
+    params.per_page = 10
 
     let queryString = querystring.stringify(params)
     let fetchUrl = `${API_BASE}?${queryString}`
@@ -21,8 +22,27 @@ async function githubClient(params) {
         console.warn("running without authorization, consider adding a GITHUB_API_TOKEN env variable")
     }
 
-    let response = await fetch(fetchUrl, options)
-    let results = await response.json()
+    try {
+        let response = await fetch(fetchUrl, options)
+        let results = await response.json()
 
-    return results
+        // etl data
+        let { total_count, incomplete_results, items: users } = results
+
+        let users = results.items.map(item => {
+            // replace item name for consistency with graphQL
+            item.url = item.html_url
+            return item;
+        })
+
+        let output = { total_count, incomplete_results, users }
+
+        return output
+
+    } catch (error) {
+        console.log(error)
+        throw (error)
+
+    }
+
 }
