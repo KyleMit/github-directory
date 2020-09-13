@@ -16,8 +16,8 @@ async function main() {
     await Promise.all(archives.map(async(zipPath) => {
         let fullPath = path.join(__dirname.replace("utils", ""), zipPath.path)
         await appendZip(fullPath, (archive) => {
-            archive.directory('templates/', 'src/templates');
-            archive.directory('assets/', 'src/assets');
+            archive.directory('templates/', 'templates');
+            archive.directory('assets/', 'assets');
         });
     }));
 
