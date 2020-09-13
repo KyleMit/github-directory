@@ -1,1 +1,1 @@
-exports.handler = require("./index.js").results
+exports.handler = require("../utils/api.js").results

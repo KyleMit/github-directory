@@ -1,1 +1,1 @@
-exports.handler = require("./index.js").search
+exports.handler = require("../utils/api.js").search

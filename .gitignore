@@ -121,3 +121,5 @@ dist
 .netlify
 
 _site
+
+functions-dist
