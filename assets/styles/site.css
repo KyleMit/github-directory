@@ -16,8 +16,19 @@ header {
     padding-top: 25px;
 }
 
-header .svg {
+a.brand {
+    color: white;
+    transition: color .4s ease;
     margin-right: 10px;
+    /* height: 29px; */
+}
+
+a.brand:hover {
+    color: #d2e7f3;
+}
+
+.brand,
+.brand svg {
     height: 40px;
 }
 
