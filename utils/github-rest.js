@@ -15,7 +15,7 @@ async function githubClient(params) {
     // sanitize incoming params
     let queryParams = {
         q: searchTerm,
-        page_num: curPage,
+        page: curPage,
         per_page: PAGE_SIZE
     }
 
