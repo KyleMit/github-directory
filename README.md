@@ -67,3 +67,11 @@ Future Home of Github User Search
 ## Prior Art
 
 * [Native Github Search](https://github.com/search)
+
+## Netlify Functions
+
+* https://github.directory/api/ping?q=kyle
+* https://github.directory/api/query?q=kyle
+* https://github.directory/api/results?q=kyle
+* https://github.directory/api/search?q=kyle
+

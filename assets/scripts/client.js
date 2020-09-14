@@ -1,57 +1,84 @@
-let updateResults = async function(e) {
-    // don't post back form if we have JS
-    e.preventDefault();
+//iife
+(function() {
 
-    var term = searchInput.value
+    // save elements
+    let searchInput = document.getElementById("search-input")
+    let form = document.getElementById("search-form")
+    let resultsSection = document.getElementById("results")
 
-    // fetch data
-    var response = await fetch(`/api/results?q=${encodeURIComponent(term)}`);
-    var results = await response.json();
 
-    // insert html
-    resultsSection.innerHTML = results.html;
+    let updateResults = async function(e) {
+        // don't post back form if we have JS
+        e.preventDefault();
 
-    // update UI state
-    let currentState = !term ? "clean" :
-        results.total_count == 0 ? "empty" :
-        "results"
+        let term = searchInput.value
 
-    // set state
-    document.body.setAttribute('data-state', currentState)
 
-    // update url
-    if (term) {
-        history.pushState({ q: "kyle" }, `Users with '${term}'`, `/search?q=${encodeURIComponent(term)}`)
-    } else {
-        // reset url
-        history.pushState({}, `Github Directory`, `/`)
+        // fetch data
+        let response = await fetch(`/api/results?q=${encodeURIComponent(term)}`);
+        let results = await response.json();
+
+
+        // todo - check for  auth failure
+
+        // insert html
+        resultsSection.innerHTML = results.html;
+
+        // update UI state
+        let currentState = !term ? "clean" :
+            results.total_count == 0 ? "empty" :
+            "results"
+
+        // set state
+        document.body.setAttribute('data-state', currentState)
+
+        // update url
+        if (term) {
+            history.pushState({ q: "kyle" }, `Users with '${term}'`, `/search?q=${encodeURIComponent(term)}`)
+        } else {
+            // reset url
+            history.pushState({}, `Github Directory`, `/`)
+        }
+
+
     }
 
+    // https://stackoverflow.com/a/61241621/1366033
+    let debounceEarly = function(func, wait) {
+        let timeoutId;
 
-}
+        return function() {
+            let context = this,
+                args = arguments;
 
-// https://stackoverflow.com/a/61241621/1366033
-function debounce(func, wait) {
-    var timeoutId;
+            let defer = function() { timeoutId = null; };
+            let callNow = !timeoutId;
 
-    return function() {
-        var context = this,
-            args = arguments;
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(defer, wait);
 
-        clearTimeout(timeoutId);
-
-        timeoutId = setTimeout(function() {
-            func.apply(context, args);
-        }, wait);
+            if (callNow) func.apply(context, args);
+        };
     };
-};
 
-let updateResultsDebounced = debounce(updateResults, 1000)
+    let addHandlers = function() {
 
-var searchInput = document.getElementById("search-input")
-var form = document.getElementById("search-form")
-var resultsSection = document.getElementById("results")
+        let updateResultsDebounced = debounceEarly(updateResults, 1000)
 
-searchInput.addEventListener('input', updateResultsDebounced);
-searchInput.addEventListener('change', updateResultsDebounced);
-form.addEventListener('submit', updateResultsDebounced);
+        try {
+
+            searchInput.addEventListener('input', updateResultsDebounced);
+            searchInput.addEventListener('change', updateResultsDebounced);
+            form.addEventListener('submit', updateResultsDebounced);
+
+        } catch (error) {
+            console.log(error)
+            document.body.setAttribute('data-state', "error")
+        }
+    }
+
+    // add handlers
+    addHandlers()
+
+
+})()

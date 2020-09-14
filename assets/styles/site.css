@@ -5,6 +5,7 @@ body {
     font-size: 1.1em;
     line-height: 1.4em;
     min-height: 100vh;
+    font-family: Helvetica, Tahoma, Verdana, sans-serif;
 }
 
 body {
@@ -160,7 +161,9 @@ svg.hero {
 
 [data-state] #splash,
 [data-state] #results,
-[data-state] #empty {
+[data-state] #empty,
+[data-state] #rate,
+[data-state] #error {
     display: none;
 }
 
@@ -173,6 +176,14 @@ svg.hero {
 }
 
 [data-state='empty'] #empty {
+    display: block
+}
+
+[data-state='rate'] #rate {
+    display: block
+}
+
+[data-state='error'] #error {
     display: block
 }
 
