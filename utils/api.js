@@ -36,6 +36,7 @@ module.exports = (function() {
             description: `Github search for ${term}`,
             path: `/search?q=${encodeURIComponent(term)}`,
             url: "https://github.directory",
+            term,
             results
         }
 

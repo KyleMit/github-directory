@@ -4,6 +4,16 @@ body {
     padding: 0;
     font-size: 1.1em;
     line-height: 1.4em;
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
 }
 
 
@@ -36,6 +46,7 @@ a.brand:hover {
 
 .waves {
     width: 100%;
+    margin-top: -1px;
 }
 
 
@@ -262,6 +273,36 @@ a.user:focus {
 }
 
 
+/* footer */
+
+footer {
+    background: #24292e;
+    padding: 25px;
+    text-align: center;
+    color: white;
+}
+
+footer a {
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color .4s ease;
+}
+
+footer svg {
+    height: 25px;
+    margin-right: 15px;
+}
+
+footer a:hover,
+footer a:focus {
+    color: #ebf4ff;
+}
+
+
 /* media queries */
 
 @media screen and (min-width: 750px) {
@@ -277,7 +318,7 @@ a.user:focus {
     }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 600px) {
     header h1 {
         font-size: 1.6em;
     }

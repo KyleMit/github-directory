@@ -25,24 +25,22 @@ let updateResults = async function(e) {
 }
 
 // https://stackoverflow.com/a/61241621/1366033
-let debounceEarly = function(func, wait) {
+function debounce(func, wait) {
     var timeoutId;
 
     return function() {
         var context = this,
             args = arguments;
 
-        var defer = function() { timeoutId = null; };
-        var callNow = !timeoutId;
-
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(defer, wait);
 
-        if (callNow) func.apply(context, args);
+        timeoutId = setTimeout(function() {
+            func.apply(context, args);
+        }, wait);
     };
 };
 
-let updateResultsDebounced = debounceEarly(updateResults, 1000)
+let updateResultsDebounced = debounce(updateResults, 1000)
 
 var searchInput = document.getElementById("search-input")
 var form = document.getElementById("search-form")

@@ -15,7 +15,6 @@
 
     {# Primary Meta Tags #}
     <title>{{title}}</title>
-    <description>{{description}}</description>
     <meta name="title" content="{{title}}">
     <meta name="author" content="Kyle Mitofsky">
     <meta name="description" content="{{description}}">
@@ -26,13 +25,13 @@
     <meta property="og:url" content="{{url}}{{path}}">
     <meta property="og:title" content="{{title}}">
     <meta property="og:description" content="{{description}}">
-    <meta property="og:image" content="{{url}}/thubnail.png">
+    <meta property="og:image" content="{{url}}/thumbnail.png">
 
     {# Twitter #}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{title}}">
     <meta name="twitter:description" content="{{description}}">
-    <meta name="twitter:image" content="{{url}}/thubnail.png">
+    <meta name="twitter:image" content="{{url}}/thumbnail.png">
 
 
     <style> {% include "../assets/styles/site.css" %} </style>
@@ -56,7 +55,7 @@
 
             <label for="search-input">Search Github Users</label>
             <div class="input-group">
-                <input type="search" name="q" id="search-input" placeholder="e.g. KyleMit">
+                <input type="search" name="q" id="search-input" placeholder="e.g. KyleMit" {% if term %} value={{term}} {% endif %} >
                 <button type="submit">
                     {% include "../assets/icons/search.svg" %}
                     <span>search</span>
@@ -87,7 +86,10 @@
     </main>
 
     <footer>
-
+        <a href="https://github.com/KyleMit/github-directory">
+            {% include "../assets/icons/github.svg" %}
+            <span>view source</span>
+        </a>
     </footer>
 
 
