@@ -45,11 +45,11 @@ async function githubClient(params) {
                 login,
                 name,
                 bio,
-                twitterUsername,
+                twitter_username: twitterUsername,
                 avatar_url: avatarUrl,
                 html_url: url,
                 public_repos: repoCount,
-                public_gists: starCount,
+                public_gists: gistCount,
                 followers: followerCount,
                 following: followingCount
             } = user
@@ -60,12 +60,12 @@ async function githubClient(params) {
                 name,
                 bio,
                 url,
-                avatarUrl: `${avatarUrl}?s=120`,
+                avatarUrl: `${avatarUrl}&s=120`,
                 twitterUsername,
                 followerCount,
                 followingCount,
                 repoCount,
-                starCount,
+                gistCount,
             }
             return output
         })
