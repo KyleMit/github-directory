@@ -6,8 +6,43 @@
 
         {% for user in results.users %}
         <li>
-            <a href="{{user.html_url}}">
-                {{user.login}}
+            <a href="{{user.url}}" class="user">
+
+                <img src="{{user.avatarUrl}}" alt="Profile for {{user.login}}" class="profile" />
+
+                <span class="login">{{user.login}}</span>
+
+                 {% if user.bio %}
+                    <span class="bio">
+                        {{ user.bio }}
+                    </span>
+                {% endif %}
+
+                <span class="following icon-data">
+                    <svg ><use href="#icon-users"></use></svg>
+                    <strong>&nbsp;{{user.followingCount}}&nbsp;</strong>
+                    <span>following</span>
+                </span>
+
+                <span class="followers icon-data">
+                    <svg ><use href="#icon-users-crown"></use></svg>
+                    <strong>&nbsp;{{user.followerCount}}&nbsp;</strong>
+                    <span>followers</span>
+                </span>
+
+                <span class="stars icon-data">
+                    <svg ><use href="#icon-star"></use></svg>
+                    <strong>&nbsp;{{user.starCount}}&nbsp;</strong>
+                    <span>stars</span>
+                </span>
+
+
+                <span class="repos icon-data">
+                    <svg ><use href="#icon-code-branch"></use></svg>
+                    <strong>&nbsp;{{user.repoCount}}&nbsp;</strong>
+                    <span>repos</span>
+                </span>
+
             </a>
         </li>
         {% endfor %}

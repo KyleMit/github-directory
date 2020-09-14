@@ -21,7 +21,7 @@ async function githubClient(params) {
                 name
                 bio
                 url
-                avatarUrl(size: 48)
+                avatarUrl(size: 120)
                 twitterUsername
                 followers {
                   totalCount
@@ -64,11 +64,12 @@ async function githubClient(params) {
         // map nodes to user data
         let users = search.edges.map(edge => {
             let data = edge.node
-            let { login, name, bio, avatarUrl, twitterUsername } = data
+            let { login, name, bio, url, avatarUrl, twitterUsername } = data
             let output = {
                 login,
                 name,
                 bio,
+                url,
                 avatarUrl,
                 twitterUsername,
                 followerCount: data.followers.totalCount,

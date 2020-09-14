@@ -6,6 +6,9 @@ body {
     line-height: 1.4em;
 }
 
+
+/* header */
+
 header {
     background: #4c2889;
     color: white;
@@ -37,6 +40,13 @@ a.brand:hover {
 }
 
 
+/* utilities */
+
+.d-none {
+    display: none;
+}
+
+
 /* form */
 
 form {
@@ -44,6 +54,7 @@ form {
     flex-direction: column;
     margin: 25px;
     position: relative;
+    margin-bottom: 0;
 }
 
 .input-group {
@@ -141,4 +152,115 @@ svg.hero {
 
 [data-state='empty'] #empty {
     display: block
+}
+
+
+/* results */
+
+section#results {
+    padding-top: 0;
+}
+
+.results-summary {
+    text-align: right;
+}
+
+ul.results-body {
+    padding-left: 0;
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: auto;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    margin-top: 45px;
+}
+
+.results-body li {
+    list-style: none;
+}
+
+a.user {
+    text-decoration: none;
+    color: black;
+    background: whitesmoke;
+    transition: background-color .4s ease, border-color .4s ease;
+    padding: 15px;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: repeat(4, auto);
+    grid-column-gap: 15px;
+    grid-row-gap: 2px;
+    grid-template-areas: "profile title title" "profile bio bio" "profile following stars" "profile followers repos";
+    border: 2px solid transparent;
+}
+
+.profile {
+    grid-area: profile
+}
+
+.login {
+    grid-area: title
+}
+
+.bio {
+    grid-area: bio
+}
+
+.following {
+    grid-area: following
+}
+
+.followers {
+    grid-area: followers
+}
+
+.stars {
+    grid-area: stars
+}
+
+.repos {
+    grid-area: repos
+}
+
+a.user:hover,
+a.user:focus {
+    background: #e9f3ff;
+    border: 2px solid #0366D6;
+    outline: none;
+}
+
+.profile {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.login {
+    font-size: 2.2em;
+    font-weight: bold;
+    padding: 5px 0;
+}
+
+.bio {
+    color: #404040;
+}
+
+.icon-data {
+    display: flex;
+    align-items: center;
+}
+
+.icon-data svg {
+    height: 16px;
+    width: 16px;
+}
+
+
+/* media queries */
+
+@media screen and (min-width: 750px) {
+    ul.results-body {
+        grid-template-columns: auto auto;
+    }
 }
