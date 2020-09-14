@@ -69,7 +69,7 @@ async function githubClient(params) {
                 name,
                 bio,
                 url,
-                avatarUrl: `${avatarUrl}&s=120`,
+                avatarUrl: `${avatarUrl}&s=60`,
                 twitterUsername,
                 followerCount,
                 followingCount,
