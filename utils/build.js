@@ -8,18 +8,14 @@ main()
 
 async function main() {
 
-
-    require("dotenv").config()
-    let githubClient = require("../utils/github-graphql.js")
-    let params = { q: "kyle" }
-    let result = await githubClient(params)
-
-
     // bundle lambda dependencies
     const archives = await zipFunctions('functions', 'functions-dist')
+    let templateFunctions = archives.filter(archive => {
+        return ["functions-dist\\results.zip", "functions-dist\\search.zip"].includes(archive.path)
+    })
 
     // append templates and assets to function zips
-    await Promise.all(archives.map(async(zipPath) => {
+    await Promise.all(templateFunctions.map(async(zipPath) => {
         let fullPath = path.join(__dirname.replace("utils", ""), zipPath.path)
         await appendZip(fullPath, (archive) => {
             archive.directory('templates/', 'templates');

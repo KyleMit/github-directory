@@ -1,4 +1,3 @@
-let querystring = require("querystring")
 let fetch = require("node-fetch");
 
 const GRAPHQL_ENDPOINT = "https://api.github.com/graphql"
