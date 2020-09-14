@@ -30,16 +30,25 @@ async function githubClient(params) {
         let userQueries = results.items.map(data => data.url)
 
         let userResults = await Promise.all(userQueries.map(async(userUrl) => {
-            let response = await fetch(userUrl, options)
-            let results = await response.json()
-            return results;
+            try {
+                let response = await fetch(userUrl, options)
+                let results = await response.json()
+                return results;
+            } catch (error) {
+                // possible username encoding trouble ie.
+                // https://github.com/K
+                // https://apps.timwhitlock.info/unicode/inspect?s=%E2%84%AA
+                // even github can't render, catch and move on
+                console.log(error)
+            }
+
         }));
 
 
         // destructure search results
         let { total_count, incomplete_results } = results
 
-        let users = userResults.map(user => {
+        let users = userResults.filter(u => u).map(user => {
             // destructure user
             let {
                 login,

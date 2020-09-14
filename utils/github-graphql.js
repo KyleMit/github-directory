@@ -6,12 +6,16 @@ module.exports = githubClient
 
 
 async function githubClient(params) {
-    let searchTerm = params.q
+    // deconstruct params we care about
+    let { q: searchTerm, p: page, c: cursor } = params
+
+    let after = cursor ? `, after: "${cursor}"` : ""
 
     let query = `
     {
-        search(query: "${searchTerm}", type: USER, first: 10) {
+        search(query: "${searchTerm}", type: USER, first: 10${after}) {
           userCount
+          cursor
           edges {
             node {
               ... on User {
@@ -81,7 +85,12 @@ async function githubClient(params) {
 
         // get properties
         let total_count = search.userCount
-        let incomplete_results = users.length > total_count
+        let incomplete_results = total_count > users.length
+
+        let pagination = {
+            page,
+            cursor
+        }
 
         let output = { total_count, incomplete_results, users }
 
