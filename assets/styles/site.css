@@ -14,6 +14,8 @@ body {
 
 main {
     flex-grow: 1;
+    max-width: 60rem;
+    margin: auto;
 }
 
 
@@ -79,10 +81,15 @@ input#search-input {
     max-width: 100%;
 }
 
-form input,
-form button {
+form input {
     background: #eaeaea;
     border: 1px solid #c2c2c2;
+}
+
+form button {
+    background: #0366d6;
+    color: white;
+    border: 1px solid #014899;
 }
 
 form button {
@@ -91,11 +98,11 @@ form button {
     cursor: pointer;
     line-height: 1.1em;
     font-size: 1.1em;
-    padding: 4px 9px;
+    padding: 4px 12px;
 }
 
 form button:hover {
-    background: #eaeaea;
+    background: #0e55a4;
 }
 
 button .fa-search {
@@ -203,11 +210,12 @@ a.user {
     border-radius: 4px;
     display: grid;
     grid-template-columns: auto auto 1fr;
-    grid-template-rows: repeat(4, auto);
+    grid-template-rows: auto auto auto auto 1fr;
     grid-column-gap: 15px;
     grid-row-gap: 2px;
     grid-template-areas: "profile title title" "profile bio bio" "profile following stars" "profile followers repos";
     border: 2px solid transparent;
+    height: calc(100% - 30px);
 }
 
 .profile {
@@ -270,6 +278,7 @@ a.user:focus {
 .icon-data svg {
     height: 16px;
     width: 16px;
+    min-width: 16px;
 }
 
 
@@ -294,12 +303,13 @@ footer a {
 
 footer svg {
     height: 25px;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
 footer a:hover,
 footer a:focus {
     color: #ebf4ff;
+    text-decoration: underline;
 }
 
 
@@ -311,7 +321,7 @@ footer a:focus {
     }
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (max-width: 420px) {
     a.user {
         grid-template-columns: auto 1fr;
         grid-template-areas: "profile title" "profile bio" "profile following" "profile stars" "profile followers" "profile repos";
@@ -325,5 +335,18 @@ footer a:focus {
     .brand,
     .brand svg {
         height: 30px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .input-group {
+        flex-direction: column
+    }
+    .no-js .input-group :first-child {
+        border-radius: 5px;
+    }
+    .no-js .input-group :last-child {
+        margin-top: 10px;
+        border-radius: 5px;
     }
 }

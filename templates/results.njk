@@ -1,6 +1,6 @@
 <div class="results">
     <div class="results-summary">
-        <strong>{{results.total_count}}</strong> results
+        <strong>{{results.total_count.toLocaleString()}}</strong> results
     </div>
     <ul class="results-body">
 
@@ -18,26 +18,26 @@
 
                 <span class="following icon-data">
                     <svg ><use href="#icon-users"></use></svg>
-                    <strong>&nbsp;{{user.followingCount}}&nbsp;</strong>
+                    <strong>&nbsp;{{user.followingCount.toLocaleString()}}&nbsp;</strong>
                     <span>following</span>
                 </span>
 
                 <span class="followers icon-data">
                     <svg ><use href="#icon-users-crown"></use></svg>
-                    <strong>&nbsp;{{user.followerCount}}&nbsp;</strong>
+                    <strong>&nbsp;{{user.followerCount.toLocaleString()}}&nbsp;</strong>
                     <span>followers</span>
                 </span>
 
                 <span class="stars icon-data">
                     <svg ><use href="#icon-star"></use></svg>
-                    <strong>&nbsp;{{user.starCount}}&nbsp;</strong>
+                    <strong>&nbsp;{{user.starCount.toLocaleString()}}&nbsp;</strong>
                     <span>stars</span>
                 </span>
 
 
                 <span class="repos icon-data">
                     <svg ><use href="#icon-code-branch"></use></svg>
-                    <strong>&nbsp;{{user.repoCount}}&nbsp;</strong>
+                    <strong>&nbsp;{{user.repoCount.toLocaleString()}}&nbsp;</strong>
                     <span>repos</span>
                 </span>
 

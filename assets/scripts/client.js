@@ -20,7 +20,13 @@ let updateResults = async function(e) {
     document.body.setAttribute('data-state', currentState)
 
     // update url
-    history.pushState({ q: "kyle" }, `Users with '${term}'`, `/search?q=${encodeURIComponent(term)}`)
+    if (term) {
+        history.pushState({ q: "kyle" }, `Users with '${term}'`, `/search?q=${encodeURIComponent(term)}`)
+    } else {
+        // reset url
+        history.pushState({}, `Github Directory`, `/`)
+    }
+
 
 }
 
