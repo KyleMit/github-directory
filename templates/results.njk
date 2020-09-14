@@ -50,7 +50,7 @@
     {% if results.pagination.showPagination %}
         <div class="results-pagination">
             {% if results.pagination.leftArrow %}
-                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.leftArrow}}">
+                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.leftArrow}}" title="previous page">
                     <svg ><use href="#icon-angle-left"></use></svg>
                 </a>
             {% else %}
@@ -100,7 +100,7 @@
             {% endif %}
 
             {% if results.pagination.rightArrow %}
-                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.rightArrow}}">
+                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.rightArrow}}" title="next page">
                     <svg ><use href="#icon-angle-right"></use></svg>
                 </a>
             {% else %}
