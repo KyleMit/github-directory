@@ -10,12 +10,14 @@ async function main() {
 
     // bundle lambda dependencies
     const archives = await zipFunctions('functions', 'functions-dist')
-    let templateFunctions = archives.filter(archive => {
-        return ["functions-dist\\results.zip", "functions-dist\\search.zip"].includes(archive.path)
+    let templateFunctions = ["results.zip", "search.zip"]
+    let appendArchives = archives.filter(archive => {
+        return templateFunctions.some(name => archive.path.endsWith(name))
     })
 
+
     // append templates and assets to function zips
-    await Promise.all(templateFunctions.map(async(zipPath) => {
+    await Promise.all(appendArchives.map(async(zipPath) => {
         let fullPath = path.join(__dirname.replace("utils", ""), zipPath.path)
         await appendZip(fullPath, (archive) => {
             archive.directory('templates/', 'templates');
