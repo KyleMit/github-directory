@@ -77,3 +77,14 @@ Github User Search Directory
 * https://github.directory/api/results?q=kyle
 * https://github.directory/api/search?q=kyle
 
+
+## TODO
+
+
+* [ ] add waiting icon
+* [ ] add page change transition
+* [ ] improve dev documentation
+* [ ] debounce vs. throttle
+* [ ] minify css / js
+* [ ] add web fonts
+* [ ] add failure states - rate limiting

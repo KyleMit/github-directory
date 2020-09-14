@@ -96,7 +96,7 @@ async function githubClient(params) {
         return output
 
     } catch (error) {
-        console.log(error)
+        console.error(`Encountered the following error when searching for '${searchTerm}'`, error.message)
         throw (error)
 
     }

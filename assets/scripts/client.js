@@ -23,59 +23,67 @@
         // don't post back form if we have JS
         e.preventDefault();
 
-        let term = searchInput.value
+        let term = searchInput.value.trim();
 
+        // reset ui if backed out
+        if (!term) {
+            // reset url
+            history.pushState({}, `Github Directory`, `/`)
+            document.body.setAttribute('data-state', "clean")
+            return;
+        }
 
-        // fetch data
-        let response = await fetch(`/api/results?q=${encodeURIComponent(term)}`);
-        let results = await response.json();
+        let results;
+        try {
 
+            // fetch data
+            let response = await fetch(`/api/results?q=${encodeURIComponent(term)}`);
+            results = await response.json();
 
-        // todo - check for  auth failure
+        } catch (error) {
+            // todo - check for  auth failure
+            console.log(error)
+            document.body.setAttribute('data-state', "error")
+            history.pushState({}, `Github Directory`, `/`)
+            return;
+        }
+
 
         // insert html
         resultsSection.innerHTML = results.html;
 
         // update UI state
-        let currentState = !term ? "clean" :
-            results.total_count == 0 ? "empty" :
-            "results"
+        let currentState = results.total_count == 0 ? "empty" : "results"
 
         // set state
         document.body.setAttribute('data-state', currentState)
 
         // update url
-        if (term) {
-            history.pushState({ q: "kyle" }, `Users with '${term}'`, `/search?q=${encodeURIComponent(term)}`)
-        } else {
-            // reset url
-            history.pushState({}, `Github Directory`, `/`)
-        }
+        history.pushState({ q: "kyle" }, `Users with '${term}'`, `/search?q=${encodeURIComponent(term)}`)
 
 
     }
 
     // https://stackoverflow.com/a/61241621/1366033
-    let debounceEarly = function(func, wait) {
-        let timeoutId;
+    function debounceLate(func, wait) {
+        var timeoutId;
 
         return function() {
-            let context = this,
+            var context = this,
                 args = arguments;
 
-            let defer = function() { timeoutId = null; };
-            let callNow = !timeoutId;
-
             clearTimeout(timeoutId);
-            timeoutId = setTimeout(defer, wait);
 
-            if (callNow) func.apply(context, args);
+            timeoutId = setTimeout(function() {
+                func.apply(context, args);
+            }, wait);
         };
     };
 
+
     let addHandlers = function() {
 
-        let updateResultsDebounced = debounceEarly(updateResults, 1000)
+        let updateResultsDebounced = debounceLate(updateResults, 600)
 
         try {
 
@@ -83,6 +91,7 @@
 
             searchInput.addEventListener('input', updateResultsDebounced);
             searchInput.addEventListener('change', updateResultsDebounced);
+            searchInput.addEventListener('keyup', updateResultsDebounced);
             form.addEventListener('submit', updateResultsDebounced);
 
         } catch (error) {
