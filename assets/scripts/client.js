@@ -5,7 +5,19 @@
     let searchInput = document.getElementById("search-input")
     let form = document.getElementById("search-form")
     let resultsSection = document.getElementById("results")
+    let footer = document.getElementById("footer")
 
+    let handleScroll = function(e) {
+        let footerHeight = footer.clientHeight
+        let winHeight = window.innerHeight
+        let winScroll = window.pageYOffset
+        let winOffset = winHeight + winScroll + footerHeight
+        let bodyOffset = document.body.offsetHeight
+        let atBottom = winOffset >= bodyOffset
+            // console.log({ winHeight, winScroll, winOffset, bodyOffset })
+
+        document.body.classList.toggle("page-bottom", atBottom)
+    };
 
     let updateResults = async function(e) {
         // don't post back form if we have JS
@@ -66,6 +78,8 @@
         let updateResultsDebounced = debounceEarly(updateResults, 1000)
 
         try {
+
+            window.onscroll = handleScroll
 
             searchInput.addEventListener('input', updateResultsDebounced);
             searchInput.addEventListener('change', updateResultsDebounced);

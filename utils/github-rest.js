@@ -2,14 +2,24 @@ let querystring = require("querystring")
 let fetch = require("node-fetch");
 
 const API_BASE = "https://api.github.com/search/users"
+const PAGE_SIZE = 10
 
 module.exports = githubClient
 
 
 async function githubClient(params) {
-    params.per_page = 10
+    // destructure params
+    let searchTerm = params.q
+    let curPage = +(params.p || 1)
 
-    let queryString = querystring.stringify(params)
+    // sanitize incoming params
+    let queryParams = {
+        q: searchTerm,
+        page_num: curPage,
+        per_page: PAGE_SIZE
+    }
+
+    let queryString = querystring.stringify(queryParams)
     let searchUrl = `${API_BASE}?${queryString}`
 
     let options = {}
@@ -39,7 +49,7 @@ async function githubClient(params) {
                 // https://github.com/K
                 // https://apps.timwhitlock.info/unicode/inspect?s=%E2%84%AA
                 // even github can't render, catch and move on
-                console.log(error)
+                console.error(error.message)
             }
 
         }));
@@ -79,7 +89,9 @@ async function githubClient(params) {
             return output
         })
 
-        let output = { total_count, incomplete_results, users }
+        let pagination = getPagination(total_count, curPage, PAGE_SIZE)
+
+        let output = { total_count, searchTerm, incomplete_results, users, pagination }
 
         return output
 
@@ -88,5 +100,52 @@ async function githubClient(params) {
         throw (error)
 
     }
+
+}
+
+function getPagination(totalCount, curPage, size) {
+
+    let firstPage = 1
+    let lastPage = Math.ceil(totalCount / size);
+    let prevPage = curPage - 1
+    let nextPage = curPage + 1
+
+    let pagination = {
+        showPagination: lastPage > 1,
+        curPage,
+    }
+
+    // if we're not on the first page, include it
+    if (curPage != firstPage) {
+        pagination.firstPage = 1
+    }
+
+    // if we're not on the last page, include it
+    if (curPage != lastPage) {
+        pagination.lastPage = lastPage
+    }
+
+    // if prev page great than first page, include it
+    if (prevPage > firstPage) {
+        pagination.prevPage = prevPage
+    }
+
+    // if next page less than last page, include it
+    if (nextPage < lastPage) {
+        pagination.nextPage = nextPage
+    }
+
+    // if there's space between first and prev, add skip block
+    if (prevPage - firstPage > 1) {
+        pagination.skipToFirst = true
+    }
+
+    // if there's space between last and next, add skip block
+    if (lastPage - nextPage > 1) {
+        pagination.skipToLast = true
+    }
+
+
+    return pagination
 
 }
