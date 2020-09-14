@@ -145,6 +145,10 @@ function getPagination(totalCount, curPage, size) {
         pagination.skipToLast = true
     }
 
+    // we prefer rendering extremes, if delta is same as end, set arrow
+    pagination.leftArrow = pagination.prevPage || pagination.firstPage
+    pagination.rightArrow = pagination.nextPage || pagination.lastPage
+
 
     return pagination
 

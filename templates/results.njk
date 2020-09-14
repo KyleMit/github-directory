@@ -49,8 +49,8 @@
 
     {% if results.pagination.showPagination %}
         <div class="results-pagination">
-            {% if results.pagination.prevPage %}
-                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.prevPage}}">
+            {% if results.pagination.leftArrow %}
+                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.leftArrow}}">
                     <svg ><use href="#icon-angle-left"></use></svg>
                 </a>
             {% else %}
@@ -60,7 +60,7 @@
             {% endif %}
 
             {% if results.pagination.firstPage %}
-                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.firstPage}}">
+                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.firstPage}}" class="first-page">
                     {{results.pagination.firstPage}}
                 </a>
             {% endif %}
@@ -72,7 +72,7 @@
             {% endif %}
 
             {% if results.pagination.prevPage %}
-                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.prevPage}}">
+                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.prevPage}}" class="prev-page">
                     {{results.pagination.prevPage.toLocaleString()}}
                 </a>
             {% endif %}
@@ -82,7 +82,7 @@
             </span>
 
             {% if results.pagination.nextPage %}
-                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.nextPage}}">
+                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.nextPage}}" class="next-page">
                     {{results.pagination.nextPage.toLocaleString()}}
                 </a>
             {% endif %}
@@ -94,13 +94,13 @@
             {% endif %}
 
             {% if results.pagination.lastPage %}
-                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.lastPage}}">
+                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.lastPage}}" class="last-page">
                     {{results.pagination.lastPage.toLocaleString()}}
                 </a>
             {% endif %}
 
-            {% if results.pagination.nextPage %}
-                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.nextPage}}">
+            {% if results.pagination.rightArrow %}
+                <a href="/search?q={{results.searchTerm}}&p={{results.pagination.rightArrow}}">
                     <svg ><use href="#icon-angle-right"></use></svg>
                 </a>
             {% else %}
