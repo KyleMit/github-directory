@@ -1,7 +1,8 @@
 # github-directory
 
-Future Home of Github User Search
+Github User Search Directory
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/16661217-2f20-4c6a-838f-d53f4702719b/deploy-status)](https://app.netlify.com/sites/github-directory/deploys)
 
 ## Features
 
@@ -71,7 +72,8 @@ Future Home of Github User Search
 ## Netlify Functions
 
 * https://github.directory/api/ping?q=kyle
-* https://github.directory/api/query?q=kyle
+* https://github.directory/api/rest?q=kyle
+* https://github.directory/api/graph?q=kyle
 * https://github.directory/api/results?q=kyle
 * https://github.directory/api/search?q=kyle
 

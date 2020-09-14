@@ -10,7 +10,7 @@ async function githubClient(params) {
     params.per_page = 10
 
     let queryString = querystring.stringify(params)
-    let fetchUrl = `${API_BASE}?${queryString}`
+    let searchUrl = `${API_BASE}?${queryString}`
 
     let options = {}
 
@@ -23,16 +23,51 @@ async function githubClient(params) {
     }
 
     try {
-        let response = await fetch(fetchUrl, options)
+        let response = await fetch(searchUrl, options)
         let results = await response.json()
 
-        // etl data
-        let { total_count, incomplete_results, items: users } = results
+        // get supplemental data
+        let userQueries = results.items.map(data => data.url)
 
-        let users = results.items.map(item => {
-            // replace item name for consistency with graphQL
-            item.url = item.html_url
-            return item;
+        let userResults = await Promise.all(userQueries.map(async(userUrl) => {
+            let response = await fetch(userUrl, options)
+            let results = await response.json()
+            return results;
+        }));
+
+
+        // destructure search results
+        let { total_count, incomplete_results } = results
+
+        let users = userResults.map(user => {
+            // destructure user
+            let {
+                login,
+                name,
+                bio,
+                twitterUsername,
+                avatar_url: avatarUrl,
+                html_url: url,
+                public_repos: repoCount,
+                public_gists: starCount,
+                followers: followerCount,
+                following: followingCount
+            } = user
+
+            // build output
+            let output = {
+                login,
+                name,
+                bio,
+                url,
+                avatarUrl: `${avatarUrl}?s=120`,
+                twitterUsername,
+                followerCount,
+                followingCount,
+                repoCount,
+                starCount,
+            }
+            return output
         })
 
         let output = { total_count, incomplete_results, users }

@@ -1,6 +1,7 @@
 {
     search(query: "kyle", type: USER, first: 10) {
         userCount
+        cursor
         edges {
             node {
                 ... on User {

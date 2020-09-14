@@ -1,5 +1,5 @@
 let nunjucks = require("nunjucks")
-let githubClient = require("./github-graphql.js")
+let githubClient = require("./github-rest.js")
 
 module.exports = (function() {
 
