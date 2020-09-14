@@ -28,9 +28,14 @@ module.exports = (function() {
         let results = await githubClient(event.queryStringParameters)
 
         let state = results.total_count == 0 ? "empty" : "results"
+        let term = event.queryStringParameters.q
 
         let data = {
             state,
+            title: `Github search for ${term}`,
+            description: `Github search for ${term}`,
+            path: `/search?q=${encodeURIComponent(term)}`,
+            url: "https://github.directory",
             results
         }
 

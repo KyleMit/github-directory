@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {# page #}
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {# favicon #}
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    {# theme #}
+    <meta name="theme-color" content="#4c2889">
+
+
+    {# Primary Meta Tags #}
+    <title>{{title}}</title>
+    <description>{{description}}</description>
+    <meta name="title" content="{{title}}">
+    <meta name="author" content="Kyle Mitofsky">
+    <meta name="description" content="{{description}}">
+    <link rel="canonical" href="{{url}}{{path}}">
+
+    {# Open Graph / Facebook #}
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{url}}{{path}}">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:image" content="{{url}}/thubnail.png">
+
+    {# Twitter #}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{title}}">
+    <meta name="twitter:description" content="{{description}}">
+    <meta name="twitter:image" content="{{url}}/thubnail.png">
+
 
     <style> {% include "../assets/styles/site.css" %} </style>
-    <title>Github Directory</title>
+
 </head>
 <body class="no-js" data-state="{{state}}">
      <script> {% include "../assets/scripts/init.js" %} </script>
 
     <header>
-        <a href="/" class="brand">
+        <a href="/" class="brand" title="home">
           {% include "../assets/github-directory.svg" %}
         </a>
         <h1>Github Directory</h1>
@@ -42,13 +73,13 @@
         </section>
 
         <section id="splash">
-            <h3>type to get started</h3>
+            <h2>type to get started</h2>
             {% include "../assets/images/undraw-people-search.svg" %}
 
         </section>
 
         <section id="empty">
-            <h3>try again</h3>
+            <h2>try again</h2>
             {% include "../assets/images/undraw-problem-solving.svg" %}
 
         </section>

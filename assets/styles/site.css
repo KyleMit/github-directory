@@ -23,7 +23,6 @@ a.brand {
     color: white;
     transition: color .4s ease;
     margin-right: 10px;
-    /* height: 29px; */
 }
 
 a.brand:hover {
@@ -66,6 +65,7 @@ input#search-input {
     line-height: 1.1em;
     font-size: 1.1em;
     padding: 5px 8px;
+    max-width: 100%;
 }
 
 form input,
@@ -120,6 +120,10 @@ button .fa-search {
 
 section {
     padding: 25px;
+}
+
+h2 {
+    text-align: center;
 }
 
 
@@ -237,9 +241,10 @@ a.user:focus {
 }
 
 .login {
-    font-size: 2.2em;
+    font-size: 2em;
     font-weight: bold;
-    padding: 5px 0;
+    word-break: break-word;
+    line-height: 1em;
 }
 
 .bio {
@@ -261,6 +266,23 @@ a.user:focus {
 
 @media screen and (min-width: 750px) {
     ul.results-body {
-        grid-template-columns: auto auto;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 400px) {
+    a.user {
+        grid-template-columns: auto 1fr;
+        grid-template-areas: "profile title" "profile bio" "profile following" "profile stars" "profile followers" "profile repos";
+    }
+}
+
+@media screen and (min-width: 600px) {
+    header h1 {
+        font-size: 1.6em;
+    }
+    .brand,
+    .brand svg {
+        height: 30px;
     }
 }

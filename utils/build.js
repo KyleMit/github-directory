@@ -9,6 +9,12 @@ main()
 async function main() {
 
 
+    require("dotenv").config()
+    let githubClient = require("../utils/github-graphql.js")
+    let params = { q: "kyle" }
+    let result = await githubClient(params)
+
+
     // bundle lambda dependencies
     const archives = await zipFunctions('functions', 'functions-dist')
 
@@ -23,12 +29,20 @@ async function main() {
 
 
     // write index.html
-    let output = nunjucks.render("templates/index.njk", { state: "clean" })
+    let data = {
+        state: "clean",
+        title: "Github Directory",
+        description: "Github User Search",
+        url: "https://github.directory",
+        path: ""
+    }
+    let output = nunjucks.render("templates/index.njk", data)
     await fs.mkdir("_site", { recursive: true })
     await fs.writeFile("_site/index.html", output, "utf8")
 
 
     // migrate static assets
     await fs.copyFile("./assets/favicon.ico", "./_site/favicon.ico")
+    await fs.copyFile("./assets/thumbnail.png", "./_site/thumbnail.png")
 
 }
