@@ -78,8 +78,7 @@ Github User Search Directory
 * https://github.directory/api/search?q=kyle
 
 
-## TODO
-
+## // TODO
 
 * [ ] add waiting icon
 * [ ] add page change transition
@@ -88,3 +87,4 @@ Github User Search Directory
 * [ ] minify css / js
 * [ ] add web fonts
 * [ ] add failure states - rate limiting
+* [ ] update pagination - max at 1,000 records
