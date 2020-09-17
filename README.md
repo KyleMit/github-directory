@@ -14,7 +14,4 @@ npm run build # Builds the app for production to the build folder
 
 ### Deployment
 
-Push commit to `react` branch and netlify will use branch deploys to build as subdomain of main site
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
+Push commit to `react` branch and netlify will use [branch deploys](https://docs.netlify.com/site-deploys/overview/#branch-deploy-controls) to build a [branch subdomain](https://docs.netlify.com/domains-https/custom-domains/multiple-domains/#branch-subdomains) of main site

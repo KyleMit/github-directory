@@ -12,6 +12,9 @@ function App() {
           <em>(React Edition)</em>
         </p>
       </header>
+      <footer className="App-footer">
+        <a href="https://github.com/KyleMit/github-directory/tree/react">View Source</a>
+      </footer>
     </div>
   );
 }
