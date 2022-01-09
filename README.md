@@ -71,11 +71,11 @@ Github User Search Directory
 
 ## Netlify Functions
 
-* https://github.directory/api/ping?q=kyle
-* https://github.directory/api/rest?q=kyle
-* https://github.directory/api/graph?q=kyle
-* https://github.directory/api/results?q=kyle
-* https://github.directory/api/search?q=kyle
+* [github.directory/api/ping?q=kyle](https://github.directory/api/ping?q=kyle)
+* [github.directory/api/rest?q=kyle](https://github.directory/api/rest?q=kyle)
+* [github.directory/api/graph?q=kyle](https://github.directory/api/graph?q=kyle)
+* [github.directory/api/results?q=kyle](https://github.directory/api/results?q=kyle)
+* [github.directory/api/search?q=kyle](https://github.directory/api/search?q=kyle)
 
 
 ## // TODO
@@ -88,3 +88,4 @@ Github User Search Directory
 * [ ] add web fonts
 * [ ] add failure states - rate limiting
 * [ ] update pagination - max at 1,000 records
+* [ ] use ajax on pagination updates
